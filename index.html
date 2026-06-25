@@ -846,21 +846,6 @@ const CMS_NOTES={
 };
 
 
-// ── MAP INIT ──────────────────────────────────────────────────────────────────
-const map=L.map('map',{zoomControl:true,scrollWheelZoom:true});
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
-  attribution:'&copy; OpenStreetMap contributors &copy; CARTO',
-  subdomains:'abcd',maxZoom:19
-}).addTo(map);
-map.setView([56,-96],4);
-
-let stateOverlayLayer=null;
-let casinoMarkerLayer=[];
-let curState=null;
-let curList=[];
-let curIdx=null;
-let curView='markers';
-
 // ── HASH UTILS ────────────────────────────────────────────────────────────────
 function sh(s){let h=5381;for(let i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return Math.abs(h);}
 function di(h,lo,hi){const x=Math.sin(h*7919+31337)*198491;return lo+Math.floor((x-Math.floor(x))*(hi-lo+1));}
@@ -1033,7 +1018,7 @@ const casinoMarkers={};    // state -> [L.Marker, ...]
 let stateOverlayLayer=null;
 let currentView='markers';
 
-const map=L.map('map',{center:[38.5,-96],zoom:4,maxZoom:19,minZoom:3,scrollWheelZoom:true});
+const map=L.map('map',{center:[56,-96],zoom:4,maxZoom:19,minZoom:3,scrollWheelZoom:true});
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
   attribution:'© <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>',
   maxZoom:19
