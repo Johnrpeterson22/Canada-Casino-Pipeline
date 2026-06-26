@@ -887,6 +887,7 @@ function fetchCloudPL(silent){
       applyOverridesToDB();
       cloudReady=true;
       setSyncIndicator('synced');
+      if(dirtyKeys.size>0)pushCloudPL();  // flush any edits made before cloud was ready
       if(curState)renderPanel();
       refreshStateMarkers();
       if(casinoMarkers[curState])buildCasinoMarkers(curState);
@@ -899,6 +900,7 @@ function fetchCloudPL(silent){
 
 // Push only the locally-changed records, merged onto the freshest cloud copy (debounced)
 function pushCloudPL(){
+  if(!cloudReady){setTimeout(pushCloudPL,500);return;}  // wait for initial cloud load
   setSyncIndicator('syncing');
   const keysToPush=Array.from(dirtyKeys);
   fetch(JSONBIN_URL+'/latest',{headers:{'X-Master-Key':JSONBIN_KEY}})
