@@ -1280,13 +1280,13 @@ function renderDetail(p){
     '<div class="sec-lbl">Property Details</div>'+
     '<div class="dfields">'+
     '<div><div class="dfl" style="margin-bottom:2px;">Type</div><select class="fi" id="fi-type" style="margin-bottom:0;">'+
-      ['Tribal','Commercial','Racino'].map(function(t){return '<option value="'+t+'"'+(t===p.type?' selected':'')+'>'+t+'</option>';}).join('')+
+      ['Tribal','Commercial','Racino'].map(function(t){return '<option value="'+t+'"'+(t===(rec.type||p.type)?' selected':'')+'>'+t+'</option>';}).join('')+
     '</select></div>'+
     '<div><div class="dfl" style="margin-bottom:2px;">CMS</div><select class="fi" id="fi-cms" style="margin-bottom:0;font-size:11px;">'+
-      ALL_CMS.map(function(c){return '<option value="'+c+'"'+(c===p.cms?' selected':'')+'>'+c+'</option>';}).join('')+
+      ALL_CMS.map(function(c){return '<option value="'+c+'"'+(c===(rec.cms||p.cms)?' selected':'')+'>'+c+'</option>';}).join('')+
     '</select></div>'+
-    '<div><div class="dfl" style="margin-bottom:2px;">Est. Slots</div><input class="fi" id="fi-slots" type="number" min="0" style="margin-bottom:0;" value="'+p.slots+'"></div>'+
-    '<div><div class="dfl" style="margin-bottom:2px;">Tables</div><input class="fi" id="fi-tables" type="number" min="0" style="margin-bottom:0;" value="'+p.tables+'"></div>'+
+    '<div><div class="dfl" style="margin-bottom:2px;">Est. Slots</div><input class="fi" id="fi-slots" type="number" min="0" style="margin-bottom:0;" value="'+(rec.slots!==undefined?rec.slots:p.slots)+'"></div>'+
+    '<div><div class="dfl" style="margin-bottom:2px;">Tables</div><input class="fi" id="fi-tables" type="number" min="0" style="margin-bottom:0;" value="'+(rec.tables!==undefined?rec.tables:p.tables)+'"></div>'+
     '</div>'+
     '<div class="sec-lbl">Contact</div>'+
     '<input class="fi" id="fi-contact" type="text" placeholder="Contact name / title" value="'+(rec.contact||'')+'">'+
