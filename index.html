@@ -4144,8 +4144,12 @@ function renderDetail(p){
       ALL_CMS.map(function(c){return '<option value="'+c+'"'+(c===p.cms?' selected':'')+'>'+c+'</option>';}).join('')+
     '</select></div>'+
     '<div><div class="dfl" style="margin-bottom:2px;">Version</div>'+
-    '<input class="fi" id="fi-version" list="version-options" type="text" placeholder="✏ Type version here" style="margin-bottom:0;font-size:12px;font-weight:600;background:#fffbeb;border:2px solid #f59e0b;color:#92400e;" value="'+(rec.version||'')+'" onclick="this.select()" onfocus="this.select()">'+
-
+    '<select class="fi" id="fi-version-sel" style="margin-bottom:4px;" onchange="handleVersionSelect(this)">'+
+      '<option value="">Select Version</option>'+
+      ['R6','R5','4.6.4','4.2.3','3.24'].map(function(v){return '<option value="'+v+'"'+((rec.version===v)?' selected':'')+'>'+v+'</option>';}).join('')+
+      '<option value="__other__" '+(rec.version&&rec.version!==''&&['R6','R5','4.6.4','4.2.3','3.24'].indexOf(rec.version)<0?'selected':'')+' style="color:#0f6e56;font-weight:700;background:#d4f0e5;">✏ Other — Type your version here</option>'+
+    '</select>'+
+    '<input class="fi" id="fi-version" type="text" placeholder="Type version here..." style="display:'+(rec.version&&rec.version!==''&&['R6','R5','4.6.4','4.2.3','3.24'].indexOf(rec.version)<0?'block':'none')+';border:2px solid #0f6e56;background:#d4f0e5;" value="'+(rec.version&&['R6','R5','4.6.4','4.2.3','3.24'].indexOf(rec.version)<0?rec.version:'')+'" onfocus="this.select()">'+
     '</div>'+
     '</div>'+
     '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;">'+
