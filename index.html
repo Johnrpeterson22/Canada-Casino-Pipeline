@@ -3383,7 +3383,7 @@ function openCanadaDetail(c, prov) {
       ['R6','R5','4.6.4','4.2.3','3.24'].map(function(v){return '<option value="'+v+'"'+((rec.version===v)?' selected':'')+'>'+v+'</option>';}).join('')+
       '<option value="__other__" '+(['R6','R5','4.6.4','4.2.3','3.24'].indexOf(rec.version)<0&&rec.version?'selected':'')+' style="color:#0f6e56;font-weight:700;background:#d4f0e5;">✏ Other — Type your version here</option>'+
     '</select>'+
-    '<input class="fi" id="fi-version" type="text" placeholder="Type version here..." style="display:'+(rec.version&&rec.version!==''&&['R6','R5','4.6.4','4.2.3','3.24'].indexOf(rec.version)<0?'block':'none')+';border:2px solid #0f6e56;background:#d4f0e5;" value="'+(rec.version&&['R6','R5','4.6.4','4.2.3','3.24'].indexOf(rec.version)<0?rec.version:'')+'" onfocus="this.select()">'+
+    '<input class="fi" id="fi-version" type="text" placeholder="Type version here..." style="display:none;border:2px solid #0f6e56;background:#d4f0e5;" value="" onfocus="this.select()">'+
     '</div>'+
     '</div>'+
     '<div class="sec-lbl">Next Step</div>'+
@@ -4162,10 +4162,10 @@ function renderDetail(p){
     '<div><div class="dfl" style="margin-bottom:2px;">Version</div>'+
     '<select class="fi" id="fi-version-sel" style="margin-bottom:4px;" onchange="handleVersionSelect(this)">'+
       '<option value="">Select Version</option>'+
-      ['R6','R5','4.6.4','4.2.3','3.24'].map(function(v){return '<option value="'+v+'"'+((rec.version===v)?' selected':'')+'>'+v+'</option>';}).join('')+
-      '<option value="__other__" '+(rec.version&&rec.version!==''&&['R6','R5','4.6.4','4.2.3','3.24'].indexOf(rec.version)<0?'selected':'')+' style="color:#0f6e56;font-weight:700;background:#d4f0e5;">✏ Other — Type your version here</option>'+
+      ['R6','R5','4.6.4','4.2.3','3.24'].map(function(v){return '<option value="'+v+'"'+((rec.version&&rec.version.trim()===v)?' selected':'')+'>'+v+'</option>';}).join('')+
+      '<option value="__other__" style="color:#0f6e56;font-weight:700;background:#d4f0e5;">✏ Other — Type your version here</option>'+
     '</select>'+
-    '<input class="fi" id="fi-version" type="text" placeholder="Type version here..." style="display:'+(rec.version&&rec.version!==''&&['R6','R5','4.6.4','4.2.3','3.24'].indexOf(rec.version)<0?'block':'none')+';border:2px solid #0f6e56;background:#d4f0e5;" value="'+(rec.version&&['R6','R5','4.6.4','4.2.3','3.24'].indexOf(rec.version)<0?rec.version:'')+'" onfocus="this.select()">'+
+    '<input class="fi" id="fi-version" type="text" placeholder="Type version here..." style="display:none;border:2px solid #0f6e56;background:#d4f0e5;" value="" onfocus="this.select()">'+
     '</div>'+
     '</div>'+
     '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;">'+
